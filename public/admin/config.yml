@@ -1,6 +1,6 @@
 # Replace YOUR_GITHUB_USERNAME/YOUR_REPOSITORY below before using the CMS.
 backend:
-  name: bsatish417
+  name: github
   repo: bsatish417/portfolio
   branch: main
   auth_methods: [token]

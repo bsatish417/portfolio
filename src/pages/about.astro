@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+const pages = await getCollection('pages', ({ data }) => !data.draft);
+const page = pages.find((entry) => entry.id === 'about');
+const { Content } = page ? await render(page) : { Content: null };
+---
+<BaseLayout title={page?.data.title || 'About'} description={page?.data.description}>
+  <article class="prose wrap page-content">{Content ? <Content /> : <p>Create <code>about.md</code> in the CMS.</p>}</article>
+</BaseLayout>

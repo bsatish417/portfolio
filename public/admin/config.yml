@@ -1,0 +1,125 @@
+# Replace YOUR_GITHUB_USERNAME/YOUR_REPOSITORY below before using the CMS.
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPOSITORY
+  branch: main
+  auth_methods: [token]
+
+output:
+  omit_empty_optional_fields: true
+
+media_folder: /public/uploads
+public_folder: /uploads
+
+site_url: https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY
+display_url: https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY
+
+media_library:
+  name: default
+
+collections:
+  - name: site_settings
+    label: Site Settings
+    files:
+      - name: settings
+        label: General Settings
+        file: src/data/site.json
+        format: json
+        fields:
+          - { label: Site title, name: title, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Site description, name: description, widget: text }
+          - { label: Author name, name: author, widget: string }
+          - { label: Contact email, name: email, widget: string }
+          - label: Social links
+            name: socialLinks
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string }
+          - { label: Footer text, name: footerText, widget: string }
+
+  - name: navigation
+    label: Navigation
+    files:
+      - name: main_navigation
+        label: Main Menu
+        file: src/data/navigation.json
+        format: json
+        fields:
+          - label: Menu items
+            name: items
+            widget: list
+            summary: '{{fields.label}}'
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string, hint: 'Use a path such as /about/ or an external URL.' }
+              - label: Submenu items
+                name: children
+                widget: list
+                required: false
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: URL, name: url, widget: string }
+                  - label: Nested submenu items
+                    name: children
+                    widget: list
+                    required: false
+                    fields:
+                      - { label: Label, name: label, widget: string }
+                      - { label: URL, name: url, widget: string }
+
+  - name: pages
+    label: Pages
+    label_singular: Page
+    folder: src/content/pages
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Menu order, name: order, widget: number, required: false, value_type: int, default: 100 }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: src/content/blog
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    sortable_fields: [pubDate, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description / excerpt, name: description, widget: text }
+      - { label: Publish date, name: pubDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false }
+      - { label: Updated date, name: updatedDate, widget: datetime, required: false, date_format: 'YYYY-MM-DD', time_format: false }
+      - { label: Author, name: author, widget: string, default: 'Your Name' }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Cover image, name: coverImage, widget: image, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: projects
+    label: Portfolio Projects
+    label_singular: Project
+    folder: src/content/projects
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Date, name: date, widget: datetime, required: false, date_format: 'YYYY-MM-DD', time_format: false }
+      - { label: Role, name: role, widget: string, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Project URL, name: url, widget: string, required: false }
+      - { label: Cover image, name: coverImage, widget: image, required: false }
+      - { label: Featured on homepage, name: featured, widget: boolean, default: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Case study, name: body, widget: markdown }

@@ -1,13 +1,28 @@
+
 ---
+import NavItems from './NavItems.astro';
+
 const { items, base } = Astro.props;
-const href = (url) => `${base}${url === '/' ? '/' : url}`;
+
+const href = (url) => {
+  if (/^(https?:|mailto:|tel:|#)/i.test(url)) {
+    return url;
+  }
+  return `${base}${url === '/' ? '/' : url}`;
+};
 ---
+
 {items?.length > 0 && (
   <ul class="menu-level">
     {items.map((item) => (
       <li class:list={['nav-item', { 'has-children': item.children?.length }]}>
         <a href={href(item.url)}>{item.label}</a>
-        {item.children?.length > 0 && <div class="submenu"><NavItems items={item.children} base={base} /></div>}
+
+        {item.children?.length > 0 && (
+          <div class="submenu">
+            <NavItems items={item.children} base={base} />
+          </div>
+        )}
       </li>
     ))}
   </ul>

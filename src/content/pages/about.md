@@ -2,7 +2,11 @@
 title: About
 description: A little more about me.
 order: 1
+draft: false
+tags:
+  - Alex
 ---
+
 # Hello, I'm Alex.
 
 I'm a designer and developer who enjoys turning complex ideas into clear, useful digital experiences.

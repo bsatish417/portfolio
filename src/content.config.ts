@@ -9,6 +9,7 @@ const pages = defineCollection({
     permalink: z.string().optional(),
     draft: z.boolean().default(false),
     order: z.number().default(100),
+    tags: z.array(z.string()).default([]),
   }),
 });
 

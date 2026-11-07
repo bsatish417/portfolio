@@ -10,7 +10,7 @@ export const GET: APIRoute = async () => {
   const records = [
     ...posts.map((item) => ({ title: item.data.title, description: item.data.description, url: `/blog/${item.id}/`, type: 'Article', tags: item.data.tags || [] })),
     ...projects.map((item) => ({ title: item.data.title, description: item.data.description, url: `/portfolio/${item.id}/`, type: 'Project', tags: item.data.tags || [] })),
-    ...pages.map((item) => ({ title: item.data.title, description: item.data.description || '', url: item.id === 'about' || item.id === 'contact' ? `/${item.id}/` : `/pages/${item.id}/`, type: 'Page', tags: [] })),
+    ...pages.map((item) => ({ title: item.data.title, description: item.data.description || '', url: item.id === 'about' || item.id === 'contact' ? `/${item.id}/` : `/pages/${item.id}/`, type: 'Page', tags: item.data.tags || [] })),
   ];
   return new Response(JSON.stringify(records), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
 };

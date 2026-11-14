@@ -1,23 +1,48 @@
 {
   "items": [
-    { "label": "Home", "url": "/", "children": [] },
-    { "label": "About", "url": "/about/", "children": [] },
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "About",
+      "url": "/about/"
+    },
     {
       "label": "Portfolio",
       "url": "/portfolio/",
       "children": [
-        { "label": "Selected work", "url": "/portfolio/", "children": [] },
-        { "label": "Experiments", "url": "/experiments/", "children": [] }
+        {
+          "label": "Selected work",
+          "url": "/portfolio/"
+        },
+        {
+          "label": "Experiments",
+          "url": "/experiments/"
+        }
       ]
     },
     {
       "label": "Blog",
       "url": "/blog/",
       "children": [
-        { "label": "All articles", "url": "/blog/", "children": [] },
-        { "label": "Topics", "url": "/blog/#topics", "children": [] }
+        {
+          "label": "All articles",
+          "url": "/blog/"
+        },
+        {
+          "label": "Topics",
+          "url": "/blog/#topics"
+        }
       ]
     },
-    { "label": "Contact", "url": "/contact/", "children": [] }
+    {
+      "label": "Contact",
+      "url": "/contact/"
+    },
+    {
+      "label": "Test",
+      "url": "/Test/"
+    }
   ]
 }

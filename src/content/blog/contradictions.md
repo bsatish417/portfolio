@@ -1,7 +1,7 @@
 ---
 title: Contradictions
 description: Contradictions
-pubDate: 2026-11-14
+pubDate: 2026-11-13
 author: SB
 tags:
   - knowledge

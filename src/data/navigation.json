@@ -9,7 +9,7 @@
       "url": "/about/"
     },
     {
-      "label": "Articles",
+      "label": "Portfolio",
       "url": "/portfolio/",
       "children": [
         {
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "label": "Blog",
+      "label": "Articles",
       "url": "/blog/",
       "children": [
         {
